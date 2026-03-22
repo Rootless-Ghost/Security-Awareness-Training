@@ -227,6 +227,8 @@ For production deployment:
 
 MIT License — see [LICENSE](LICENSE) for details.
 
+---
+
 <div align="center">
 
 Built by [Rootless-Ghost](https://github.com/Rootless-Ghost) 
