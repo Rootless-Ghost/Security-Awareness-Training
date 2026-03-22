@@ -27,7 +27,7 @@ This platform directly supports security operations by:
 
 ## Features
 
-### 🎯 Core Functionality
+### Core Functionality
 - **User Authentication** - Secure registration and login system
 - **Training Modules** - Interactive lessons on:
   - Phishing Basics
@@ -41,7 +41,7 @@ This platform directly supports security operations by:
 - **Progress Tracking** - Visual dashboards showing completion rates
 - **Admin Panel** - Monitor team progress and phishing detection rates
 
-### 🎨 Design
+### Design
 - Modern, responsive UI
 - Clean gradient theme
 - Mobile-friendly layout
