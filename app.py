@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import secrets
+import os
 
 app = Flask(__name__) 
 app.jinja_env.globals.update(enumerate=enumerate)
@@ -264,13 +265,15 @@ def init_db():
         
         # Create admin user if doesn't exist
         if not User.query.filter_by(username='admin').first():
+            _admin_password = os.urandom(32).hex()
             admin = User(
                 username='admin',
                 email='admin@securitytraining.local',
-                password=generate_password_hash('admin123'),
+                password=generate_password_hash(_admin_password),
                 is_admin=True
             )
             db.session.add(admin)
+            print(f"[init_db] Generated admin password: {_admin_password}")
         
         # Add sample modules if none exist
         if Module.query.count() == 0:

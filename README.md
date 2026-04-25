@@ -97,7 +97,7 @@ Open your browser to: http://localhost:5000
 ```
 
 ## First Run
-Register an account - the first registered user automatically becomes admin.
+On first run, `init_db()` creates a seeded `admin` account and prints the generated password to stdout. Copy it before the output scrolls away — it is not stored in plaintext anywhere. Register additional accounts normally after that.
 
 ## Usage
 
@@ -202,7 +202,7 @@ Add to the `scenarios` list in `init_db()`:
 ## Deployment Recommendations
 
 For production deployment:
-1. Change the secret key in `app.py`
+1. The secret key is randomized at startup — no manual change needed, but set `SECRET_KEY` as an environment variable for a stable value across restarts
 2. Set `debug=False` in `app.run()`
 3. Use a production WSGI server (Gunicorn, uWSGI)
 4. Consider PostgreSQL instead of SQLite
