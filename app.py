@@ -282,7 +282,7 @@ def init_db():
                 is_admin=True
             )
             db.session.add(admin)
-            print(f"[init_db] Generated admin password: {_admin_password}")
+            print("[init_db] Admin user created with a generated password.")
         
         # Add sample modules if none exist
         if Module.query.count() == 0:
