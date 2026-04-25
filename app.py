@@ -5,12 +5,21 @@ from datetime import datetime
 import secrets
 import os
 
-app = Flask(__name__) 
+app = Flask(__name__)
 app.jinja_env.globals.update(enumerate=enumerate)
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///security_training.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+
+
+@app.after_request
+def _set_security_headers(response):
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    return response
+
 
 # Database Models
 class User(db.Model):
